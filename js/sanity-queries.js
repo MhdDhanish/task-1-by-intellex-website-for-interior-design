@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    FENYX INTERIORS — SANITY GROQ QUERIES
    All portfolio-related queries in a single file.
    ========================================================================== */
@@ -34,7 +34,7 @@ const SANITY_QUERIES = {
    * Fetch only featured projects for the home page.
    */
   featuredProjects: `
-    *[_type == "project" && featured == true] | order(year desc) [0...4] {
+    *[_type == "project"] | order(featured desc, year desc) [0...4] {
       _id,
       title,
       "slug": slug.current,
