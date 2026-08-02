@@ -17,7 +17,7 @@
  * =============================================================================
  */
 
-;(function FenyxHeroModule(global) {
+; (function FenyxHeroModule(global) {
   'use strict';
 
   /* ─────────────────────────────────────────────────────────────────────────
@@ -25,22 +25,22 @@
    * ───────────────────────────────────────────────────────────────────────── */
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
   const CFG = Object.freeze({
-    TOTAL_FRAMES       : isMobile ? 300 : 270,
-    FRAME_PATH         : isMobile ? 'highquality-frames-for-mobile/frame_000' : 'frames2/ezgif-frame-',
-    FRAME_EXT          : isMobile ? '.png' : '.jpg',
-    PRIORITY_COUNT     : 45,      // First N frames loaded before ScrollTrigger fires
-    CONCURRENCY        : 10,      // Background parallel downloads
-    SCROLL_DISTANCE    : '600%',  // Pin scroll travel — premium, unhurried feel
-    SCRUB              : 1.2,     // GSAP scrub lag (higher = silkier)
-    MAX_DPR            : 2.5,     // Cap for very high-DPI screens
-    CANVAS_ID          : 'fenyx-hero-canvas',
-    SECTION_ID         : 'fenyx-hero',
-    LOADER_ID          : 'fenyx-hero-loader',
-    PROGRESS_FILL_ID   : 'fenyx-progress-fill',
-    ROOM_LABEL_ID      : 'fenyx-room-label',
-    ROOM_NAME_ID       : 'fenyx-room-name',
-    ROOM_NUM_ID        : 'fenyx-room-num',
-    SCROLL_CUE_ID      : 'fenyx-scroll-cue',
+    TOTAL_FRAMES: isMobile ? 300 : 240,
+    FRAME_PATH: isMobile ? 'highquality-frames-for-mobile/ezgif-frame-' : 'frames-for-desktop/frame_',
+    FRAME_EXT: isMobile ? '.jpg' : '.webp',
+    PRIORITY_COUNT: 45,      // First N frames loaded before ScrollTrigger fires
+    CONCURRENCY: 10,      // Background parallel downloads
+    SCROLL_DISTANCE: '600%',  // Pin scroll travel — premium, unhurried feel
+    SCRUB: 1.2,     // GSAP scrub lag (higher = silkier)
+    MAX_DPR: 2.5,     // Cap for very high-DPI screens
+    CANVAS_ID: 'fenyx-hero-canvas',
+    SECTION_ID: 'fenyx-hero',
+    LOADER_ID: 'fenyx-hero-loader',
+    PROGRESS_FILL_ID: 'fenyx-progress-fill',
+    ROOM_LABEL_ID: 'fenyx-room-label',
+    ROOM_NAME_ID: 'fenyx-room-name',
+    ROOM_NUM_ID: 'fenyx-room-num',
+    SCROLL_CUE_ID: 'fenyx-scroll-cue',
   });
 
   /* ─────────────────────────────────────────────────────────────────────────
@@ -49,49 +49,49 @@
    * ───────────────────────────────────────────────────────────────────────── */
   const TEXT_STAGES = [
     {
-      id        : 'fenyx-stage-1',
-      start     : 0.00,
-      end       : 0.20,
-      fade      : 0.045,
-      isFinal   : false,
-      room      : 'Exterior Architecture',
-      roomNum   : '01 / 05',
+      id: 'fenyx-stage-1',
+      start: 0.00,
+      end: 0.20,
+      fade: 0.045,
+      isFinal: false,
+      room: 'Exterior Architecture',
+      roomNum: '01 / 05',
     },
     {
-      id        : 'fenyx-stage-2',
-      start     : 0.20,
-      end       : 0.45,
-      fade      : 0.050,
-      isFinal   : false,
-      room      : 'Grand Living Hall',
-      roomNum   : '02 / 05',
+      id: 'fenyx-stage-2',
+      start: 0.20,
+      end: 0.45,
+      fade: 0.050,
+      isFinal: false,
+      room: 'Grand Living Hall',
+      roomNum: '02 / 05',
     },
     {
-      id        : 'fenyx-stage-3',
-      start     : 0.45,
-      end       : 0.70,
-      fade      : 0.050,
-      isFinal   : false,
-      room      : 'Master Bedroom Suite',
-      roomNum   : '03 / 05',
+      id: 'fenyx-stage-3',
+      start: 0.45,
+      end: 0.70,
+      fade: 0.050,
+      isFinal: false,
+      room: 'Master Bedroom Suite',
+      roomNum: '03 / 05',
     },
     {
-      id        : 'fenyx-stage-4',
-      start     : 0.70,
-      end       : 0.88,
-      fade      : 0.045,
-      isFinal   : false,
-      room      : 'Spa-Inspired Bathroom',
-      roomNum   : '04 / 05',
+      id: 'fenyx-stage-4',
+      start: 0.70,
+      end: 0.88,
+      fade: 0.045,
+      isFinal: false,
+      room: 'Spa-Inspired Bathroom',
+      roomNum: '04 / 05',
     },
     {
-      id        : 'fenyx-stage-5',
-      start     : 0.88,
-      end       : 1.00,
-      fade      : 0.040,
-      isFinal   : true,
-      room      : 'Fenyx Signature Atelier',
-      roomNum   : '05 / 05',
+      id: 'fenyx-stage-5',
+      start: 0.88,
+      end: 1.00,
+      fade: 0.040,
+      isFinal: true,
+      room: 'Fenyx Signature Atelier',
+      roomNum: '05 / 05',
     },
   ];
 
@@ -111,12 +111,7 @@
     const _ready = new Array(CFG.TOTAL_FRAMES).fill(false);
 
     function src(index) {
-      let frameNum = index + 1;
-      // Skip every second frame for high-quality PNGs to reduce memory (loads 1, 3, 5... 599)
-      if (isMobile && CFG.FRAME_EXT === '.png') {
-        frameNum = (index * 2) + 1;
-      }
-      const pad = String(frameNum).padStart(3, '0');
+      const pad = String(index + 1).padStart(3, '0');
       return `${CFG.FRAME_PATH}${pad}${CFG.FRAME_EXT}`;
     }
 
@@ -151,12 +146,12 @@
               if (img.complete && img.naturalWidth) {
                 onReady();
               } else {
-                img.onload  = onReady;
+                img.onload = onReady;
                 img.onerror = function () { resolve(null); };
               }
             });
         } else {
-          img.onload  = onReady;
+          img.onload = onReady;
           img.onerror = function () { resolve(null); };
         }
       });
@@ -236,7 +231,7 @@
    * ───────────────────────────────────────────────────────────────────────── */
   var CanvasRenderer = (function () {
     var _canvas = null;
-    var _ctx    = null;
+    var _ctx = null;
     var _cw = 0, _ch = 0;   // logical CSS pixels
     var _dpr = 1;
     var _lastFrame = -1;
@@ -245,23 +240,23 @@
 
     function init(canvas) {
       _canvas = canvas;
-      _ctx    = canvas.getContext('2d', { alpha: false });
-      _ctx.imageSmoothingEnabled  = true;
-      _ctx.imageSmoothingQuality  = 'high';
+      _ctx = canvas.getContext('2d', { alpha: false });
+      _ctx.imageSmoothingEnabled = true;
+      _ctx.imageSmoothingQuality = 'high';
       resize();
     }
 
     function resize() {
       if (!_canvas) return;
       var parent = _canvas.parentElement || document.documentElement;
-      var w = parent.clientWidth  || window.innerWidth;
+      var w = parent.clientWidth || window.innerWidth;
       var h = parent.clientHeight || window.innerHeight;
       _dpr = Math.min(window.devicePixelRatio || 1, CFG.MAX_DPR);
       _cw = w;
       _ch = h;
-      _canvas.width  = Math.round(w * _dpr);
+      _canvas.width = Math.round(w * _dpr);
       _canvas.height = Math.round(h * _dpr);
-      _canvas.style.width  = w + 'px';
+      _canvas.style.width = w + 'px';
       _canvas.style.height = h + 'px';
       _ctx.imageSmoothingEnabled = true;
       _ctx.imageSmoothingQuality = 'high';
@@ -276,7 +271,7 @@
       var ih = img.naturalHeight;
 
       var canvasRatio = cw / ch;
-      var imgRatio    = iw / ih;
+      var imgRatio = iw / ih;
 
       var dw, dh, dx, dy;
       if (canvasRatio > imgRatio) {
@@ -330,40 +325,40 @@
         if (!el) return;
 
         var opacity = 0;
-        var ty      = 22;
+        var ty = 22;
 
         if (stage.isFinal) {
           // Final stage: fades in and stays fully visible at 100%
           if (progress >= stage.start) {
             var p = Math.min(1, (progress - stage.start) / stage.fade);
             opacity = easeOutCubic(p);
-            ty      = (1 - opacity) * 26;
+            ty = (1 - opacity) * 26;
           }
         } else {
           if (progress >= stage.start && progress <= stage.end) {
-            var fadeInEnd    = stage.start + stage.fade;
-            var fadeOutStart = stage.end   - stage.fade;
+            var fadeInEnd = stage.start + stage.fade;
+            var fadeOutStart = stage.end - stage.fade;
 
             if (progress < fadeInEnd) {
               // Fading in
               var p = (progress - stage.start) / stage.fade;
               opacity = easeOutCubic(p);
-              ty      = (1 - opacity) * 22;
+              ty = (1 - opacity) * 22;
             } else if (progress > fadeOutStart) {
               // Fading out
               var p = (stage.end - progress) / stage.fade;
               opacity = easeOutCubic(p);
-              ty      = -(1 - opacity) * 16;
+              ty = -(1 - opacity) * 16;
             } else {
               opacity = 1;
-              ty      = 0;
+              ty = 0;
             }
           }
         }
 
-        el.style.opacity          = opacity.toFixed(3);
-        el.style.transform        = 'translate3d(0,' + ty.toFixed(1) + 'px,0)';
-        el.style.pointerEvents    = opacity > 0.5 ? 'auto' : 'none';
+        el.style.opacity = opacity.toFixed(3);
+        el.style.transform = 'translate3d(0,' + ty.toFixed(1) + 'px,0)';
+        el.style.pointerEvents = opacity > 0.5 ? 'auto' : 'none';
         el.setAttribute('aria-hidden', opacity < 0.05 ? 'true' : 'false');
       });
     }
@@ -379,7 +374,7 @@
 
     function update(progress) {
       var nameEl = document.getElementById(CFG.ROOM_NAME_ID);
-      var numEl  = document.getElementById(CFG.ROOM_NUM_ID);
+      var numEl = document.getElementById(CFG.ROOM_NUM_ID);
       if (!nameEl || !numEl) return;
 
       var active = TEXT_STAGES[0]; // default
@@ -392,7 +387,7 @@
 
       if (active.room !== _lastRoom) {
         nameEl.textContent = active.room;
-        numEl.textContent  = active.roomNum;
+        numEl.textContent = active.roomNum;
         _lastRoom = active.room;
       }
     }
@@ -431,14 +426,14 @@
       }
 
       ScrollTrigger.create({
-        trigger  : section,
-        start    : 'top top',
-        end      : '+=' + CFG.SCROLL_DISTANCE,
-        pin      : true,
+        trigger: section,
+        start: 'top top',
+        end: '+=' + CFG.SCROLL_DISTANCE,
+        pin: true,
         pinSpacing: true,
         anticipatePin: 1,
-        scrub    : CFG.SCRUB,
-        onUpdate : function (self) {
+        scrub: CFG.SCRUB,
+        onUpdate: function (self) {
           onProgress(self.progress);
         },
       });
@@ -482,12 +477,12 @@
    * HERO CONTROLLER — top-level orchestrator
    * ───────────────────────────────────────────────────────────────────────── */
   var HeroController = {
-    _section : null,
-    _canvas  : null,
+    _section: null,
+    _canvas: null,
 
     init: function () {
       this._section = document.getElementById(CFG.SECTION_ID);
-      this._canvas  = document.getElementById(CFG.CANVAS_ID);
+      this._canvas = document.getElementById(CFG.CANVAS_ID);
 
       if (!this._section || !this._canvas) {
         console.warn('[FenyxHero] Required DOM elements not found.');
