@@ -31,7 +31,7 @@
     PRIORITY_COUNT: 45,      // First N frames loaded before ScrollTrigger fires
     CONCURRENCY: 10,      // Background parallel downloads
     SCROLL_DISTANCE: '600%',  // Pin scroll travel — premium, unhurried feel
-    SCRUB: 1.2,     // GSAP scrub lag (higher = silkier)
+    SCRUB: 2.5,     // GSAP scrub lag (higher = silkier, Apple-like inertia)
     MAX_DPR: 2.5,     // Cap for very high-DPI screens
     CANVAS_ID: 'fenyx-hero-canvas',
     SECTION_ID: 'fenyx-hero',
