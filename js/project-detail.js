@@ -23,7 +23,7 @@
 
     // Use a large banner image
     const coverUrl = buildImageUrl(proj.coverImage, 2000, 1000, 90);
-    const tags     = Array.isArray(proj.tags) ? proj.tags.join(' • ') : (proj.category || '');
+    const tags = Array.isArray(proj.tags) ? proj.tags.join(' • ') : (proj.category || '');
 
     document.title = `${proj.title} | Fenyx Interiors Portfolio`;
 
@@ -94,14 +94,14 @@
           ${Array.isArray(proj.galleryImages) && proj.galleryImages.length > 0 ? `
             <div class="detail-gallery">
               ${proj.galleryImages.map(img => {
-                const url = buildImageUrl(img, 1000, 1000, 85);
-                if (!url) return '';
-                return `
+      const url = buildImageUrl(img, 1000, 1000, 85);
+      if (!url) return '';
+      return `
                   <div class="gallery-img-wrapper">
                     <img src="${url}" alt="${img.caption || 'Project Gallery Image'}" loading="lazy" />
                   </div>
                 `;
-              }).join('')}
+    }).join('')}
             </div>
           ` : ''}
         </div>
@@ -112,15 +112,15 @@
 
     // Trigger animations if main.js functions are available
     if (window.Fenyx && window.Fenyx.revealElements) {
-       setTimeout(() => {
-         document.querySelectorAll('.reveal-fade').forEach(el => el.classList.add('is-visible'));
-       }, 100);
+      setTimeout(() => {
+        document.querySelectorAll('.reveal-fade').forEach(el => el.classList.add('is-visible'));
+      }, 100);
     } else {
-       // Fallback make visible instantly
-       document.querySelectorAll('.reveal-fade').forEach(el => {
-           el.style.opacity = 1;
-           el.style.transform = 'translateY(0)';
-       });
+      // Fallback make visible instantly
+      document.querySelectorAll('.reveal-fade').forEach(el => {
+        el.style.opacity = 1;
+        el.style.transform = 'translateY(0)';
+      });
     }
   }
 
@@ -154,7 +154,7 @@
 
     try {
       const isSanityConfigured = window.FenyxSanity.config && window.FenyxSanity.config.projectId !== 'YOUR_PROJECT_ID';
-      
+
       let proj = null;
       if (isSanityConfigured) {
         proj = await window.FenyxSanity.fetch(window.FenyxQueries.projectBySlug, { slug });
@@ -165,7 +165,7 @@
           proj = window.PROJECTS_DATA.find(p => p.slug === slug || p.id === slug);
         }
       }
-      
+
       if (!proj) {
         showError('Project not found or has been removed.');
         return;
