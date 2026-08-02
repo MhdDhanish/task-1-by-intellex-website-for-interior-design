@@ -20,7 +20,7 @@ const SANITY_CONFIG = {
  */
 async function sanityFetch(query, params = {}) {
   const { projectId, dataset, apiVersion, useCdn } = SANITY_CONFIG;
-  const subdomain = useCdn ? 'cdn' : 'api';
+  const subdomain = useCdn ? 'apicdn' : 'api';
   const baseUrl = `https://${projectId}.${subdomain}.sanity.io/v${apiVersion}/data/query/${dataset}`;
 
   const encodedQuery = encodeURIComponent(query);
