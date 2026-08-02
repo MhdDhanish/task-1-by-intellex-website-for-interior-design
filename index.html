@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fenyx Interiors | Bespoke Luxury Interior Design & Architecture</title>
+  <meta name="description"
+    content="Fenyx Interiors is an award-winning luxury interior design studio crafting timeless, refined residential, commercial, office, and retail spaces with turnkey precision.">
+  <meta name="keywords"
+    content="luxury interior design, space planning, bespoke joinery, turnkey interiors, modular kitchens, architectural lighting, penthouse design">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/pages.css">
+  <link rel="stylesheet" href="styles/fenyx-hero.css">
+</head>
+
+<body>
+
+  <!-- Film Grain Noise Overlay -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Luxury Preloader -->
+  <div class="preloader" aria-label="Loading Fenyx Interiors">
+    <div class="preloader-brand">Fenyx <span>Interiors</span></div>
+    <div class="preloader-progress-track">
+      <div class="preloader-progress-bar"></div>
+    </div>
+    <div class="preloader-counter">0%</div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header" id="site-header">
+    <div class="container-wide header-container">
+      <a href="index.html" class="brand-logo" aria-label="Fenyx Interiors Home">
+        <span class="brand-title">Fenyx <span>Interiors</span></span>
+        <span class="brand-subtitle">Architectural Atelier</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="projects.html" class="nav-link">Portfolio</a>
+        <a href="process.html" class="nav-link">Process</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Color Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <a href="contact.html" class="btn btn-primary btn-sm btn-header-consult">
+          <span>Book Consultation</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Open Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-backdrop"></div>
+  <div class="mobile-nav-drawer" id="mobile-drawer">
+    <div>
+      <div class="brand-title" style="margin-bottom: 40px;">Fenyx <span>Interiors</span></div>
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">01. Home</a>
+        <a href="about.html" class="mobile-nav-link">02. About Studio</a>
+        <a href="services.html" class="mobile-nav-link">03. Capabilities</a>
+        <a href="projects.html" class="mobile-nav-link">04. Portfolio</a>
+        <a href="process.html" class="mobile-nav-link">05. The Process</a>
+        <a href="contact.html" class="mobile-nav-link">06. Contact Atelier</a>
+      </nav>
+    </div>
+    <div class="mobile-nav-footer">
+      <a href="contact.html" class="btn btn-primary" style="width: 100%; margin-bottom: 16px;">
+        <span>Private Consultation</span>
+      </a>
+      <p style="font-size: 0.82rem; color: var(--text-muted);">concierge@fenyxinteriors.com • London / New York</p>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ================================================================
+         FENYX INTERIORS — APPLE-STYLE SCROLL-DRIVEN CANVAS HERO
+         270 Sequential JPG Frames  ·  HTML5 Canvas + GSAP ScrollTrigger
+         Journey: Exterior → Entrance → Living Hall → Bedroom → Bathroom
+    ================================================================ -->
+    <section class="fenyx-hero" id="fenyx-hero" aria-label="Cinematic House Walkthrough">
+
+      <!-- Gold Scroll-Progress Line -->
+      <div class="fenyx-hero__progress-track" aria-hidden="true">
+        <div class="fenyx-hero__progress-fill" id="fenyx-progress-fill"></div>
+      </div>
+
+      <!-- Loading Overlay -->
+      <div class="fenyx-hero__loader" id="fenyx-hero-loader" role="status" aria-live="polite">
+        <div class="fenyx-loader__ring"></div>
+        <span class="fenyx-loader__label">Preparing Walkthrough</span>
+      </div>
+
+      <!-- Fullscreen Canvas Player -->
+      <canvas id="fenyx-hero-canvas" class="fenyx-hero__canvas"
+        aria-label="Cinematic walkthrough of a luxury home — Exterior, Living Hall, Bedroom, Bathroom"></canvas>
+
+      <!-- Atmospheric Overlays -->
+      <div class="fenyx-hero__vignette" aria-hidden="true"></div>
+      <div class="fenyx-hero__scrim-top" aria-hidden="true"></div>
+      <div class="fenyx-hero__scrim-bottom" aria-hidden="true"></div>
+
+      <!-- ────────────────────────────────────────────────────────────
+           SYNCHRONIZED TYPOGRAPHY STAGES (scroll-driven)
+      ──────────────────────────────────────────────────────────── -->
+
+      <!-- Stage 1 · 0%–20% · Exterior Architecture -->
+      <div class="fenyx-stage" id="fenyx-stage-1" aria-hidden="true">
+        <div class="fenyx-stage__inner">
+          <div class="fenyx-badge">
+            <span class="fenyx-badge__dot"></span>
+            <span>Architectural Atelier &middot; 2026 Collection</span>
+          </div>
+          <h1 class="fenyx-stage__title">Luxury Begins <em>Here</em></h1>
+          <p class="fenyx-stage__sub">
+            An architectural arrival into bespoke craftsmanship,
+            monumental symmetry, and refined residential distinction.
+          </p>
+        </div>
+      </div>
+
+      <!-- Stage 2 · 20%–45% · Grand Living Hall -->
+      <div class="fenyx-stage" id="fenyx-stage-2" aria-hidden="true">
+        <div class="fenyx-stage__inner">
+          <div class="fenyx-badge">
+            <span class="fenyx-badge__dot"></span>
+            <span>Spatial Composition</span>
+          </div>
+          <h2 class="fenyx-stage__title">Premium Living <em>Spaces</em></h2>
+          <p class="fenyx-stage__sub">
+            Curated volumes, integrated marble architecture,
+            tailored acoustics, and natural materiality designed for grand living.
+          </p>
+        </div>
+      </div>
+
+      <!-- Stage 3 · 45%–70% · Master Bedroom Suite -->
+      <div class="fenyx-stage" id="fenyx-stage-3" aria-hidden="true">
+        <div class="fenyx-stage__inner">
+          <div class="fenyx-badge">
+            <span class="fenyx-badge__dot"></span>
+            <span>Private Sanctuaries</span>
+          </div>
+          <h2 class="fenyx-stage__title">Bedrooms Designed for <em>Comfort</em></h2>
+          <p class="fenyx-stage__sub">
+            Warm ambient lighting, textured walnut fluting, and tactile
+            comfort crafted for restful elegance and serenity.
+          </p>
+        </div>
+      </div>
+
+      <!-- Stage 4 · 70%–88% · Spa Bathroom -->
+      <div class="fenyx-stage" id="fenyx-stage-4" aria-hidden="true">
+        <div class="fenyx-stage__inner">
+          <div class="fenyx-badge">
+            <span class="fenyx-badge__dot"></span>
+            <span>Wellness &amp; Ritual</span>
+          </div>
+          <h2 class="fenyx-stage__title">Spa-Inspired <em>Bathrooms</em></h2>
+          <p class="fenyx-stage__sub">
+            Bookmatched Calacatta marble, floating vanities,
+            frameless glass enclosures, and bespoke brushed brassware.
+          </p>
+        </div>
+      </div>
+
+      <!-- Stage 5 · 88%–100% · Final Brand Reveal + CTAs -->
+      <div class="fenyx-stage" id="fenyx-stage-5" aria-hidden="true">
+        <div class="fenyx-stage__inner">
+          <div class="fenyx-badge">
+            <span class="fenyx-badge__dot"></span>
+            <span>Fenyx Signature Atelier</span>
+          </div>
+          <div class="fenyx-stage__brand-name">Fenyx</div>
+          <div class="fenyx-stage__tagline">Crafting Premium Interiors</div>
+          <p class="fenyx-stage__desc">
+            We design and execute turnkey luxury residences, penthouses,
+            and executive estates with uncompromising architectural excellence.
+          </p>
+          <div class="fenyx-cta-group">
+            <a href="projects.html" class="fenyx-btn-gold">
+              <span>Explore Portfolio</span>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+            <a href="contact.html" class="fenyx-btn-ghost">
+              <span>Book a Consultation</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room Location Tag (Bottom Left) -->
+      <div class="fenyx-hero__room" id="fenyx-room-label" aria-live="polite">
+        <span class="fenyx-hero__room-num" id="fenyx-room-num">01 / 05</span>
+        <div class="fenyx-hero__room-divider"></div>
+        <span class="fenyx-hero__room-name" id="fenyx-room-name">Exterior Architecture</span>
+      </div>
+
+      <!-- Scroll Cue (Bottom Centre) -->
+      <div class="fenyx-hero__scroll-cue" id="fenyx-scroll-cue" aria-hidden="true">
+        <span class="fenyx-hero__scroll-cue-label">Scroll to Explore</span>
+        <div class="fenyx-hero__mouse-icon">
+          <div class="fenyx-hero__scroll-wheel"></div>
+        </div>
+      </div>
+
+      <!-- Bottom gradient blend into site -->
+      <div class="fenyx-hero__site-transition" aria-hidden="true"></div>
+
+    </section>
+
+    <!-- AWARDS & PUBLICATIONS MARQUEE -->
+    <div class="marquee-wrapper" aria-label="Awards and Press Features">
+      <div class="marquee-content">
+        <div class="marquee-item"><span>✦</span> ARCHITECTURAL DIGEST BEST RESIDENCE 2025</div>
+        <div class="marquee-item"><span>✦</span> ELLE DECOR INTERNATIONAL AWARD</div>
+        <div class="marquee-item"><span>✦</span> WORLD ARCHITECTURE FESTIVAL NOMINEE</div>
+        <div class="marquee-item"><span>✦</span> DEZEEN INTERIOR STUDIO OF THE YEAR</div>
+        <div class="marquee-item"><span>✦</span> BRITISH INTERIOR GUILD HONORS</div>
+        <div class="marquee-item"><span>✦</span> WALLPAPER* DESIGN AWARDS</div>
+        <!-- Duplicated for continuous marquee loop -->
+        <div class="marquee-item"><span>✦</span> ARCHITECTURAL DIGEST BEST RESIDENCE 2025</div>
+        <div class="marquee-item"><span>✦</span> ELLE DECOR INTERNATIONAL AWARD</div>
+        <div class="marquee-item"><span>✦</span> WORLD ARCHITECTURE FESTIVAL NOMINEE</div>
+        <div class="marquee-item"><span>✦</span> DEZEEN INTERIOR STUDIO OF THE YEAR</div>
+      </div>
+    </div>
+
+    <!-- STUDIO STATEMENT / IDENTITY TEASER -->
+    <section class="section" id="statement">
+      <div class="container">
+        <div class="studio-statement-box reveal-fade">
+          <div class="eyebrow">Studio Manifesto</div>
+          <blockquote class="statement-quote">
+            “We design interiors that balance beauty, function, and emotion. Every line is intentional, every stone is
+            hand-selected, and every shadow is sculpted to cultivate calm.”
+          </blockquote>
+          <div class="statement-author">
+            <div>
+              <div class="statement-signature">Fenyx Atelier</div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Founding Partners & Principal
+                Architects</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED CASE STUDIES -->
+    <section class="section" id="featured-projects">
+      <div class="container">
+        <div class="flex-between" style="align-items: flex-end; margin-bottom: 50px; flex-wrap: wrap; gap: 20px;">
+          <div class="section-header" style="margin-bottom: 0;">
+            <div class="eyebrow">Curated Works</div>
+            <h2 class="section-title">Selected Case Studies</h2>
+            <p class="section-desc">A showcase of bespoke residences, corporate sanctuaries, and retail ateliers.</p>
+          </div>
+          <a href="projects.html" class="btn btn-gold-outline">
+            <span>View All Projects</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <div class="grid grid-2" id="featured-projects-grid">
+          <!-- Populated dynamically by js/projects.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- BEFORE / AFTER TRANSFORMATION SLIDER -->
+    <section class="section" id="transformation">
+      <div class="container">
+        <div class="section-header centered reveal-fade">
+          <div class="eyebrow centered">The Transformation</div>
+          <h2 class="section-title">From Standard Room to Sensory Luxury</h2>
+          <p class="section-desc">Drag the interactive divider to witness an ordinary living space reimagined into
+            bespoke architectural luxury.</p>
+        </div>
+
+        <div class="slider-comparison-container reveal-fade reveal-delay-1" id="kensington-slider">
+          <!-- After Image (Bottom layer - Luxury Transformed Room) -->
+          <img class="slider-img" src="images/transformation-after.png"
+            alt="Finished Luxury Interior - Fenyx Interiors" />
+
+          <!-- Before Image (Top clipped layer - Standard Ordinary Room) -->
+          <div class="slider-before-wrapper">
+            <img class="slider-img" src="images/transformation-before.png" alt="Standard Room Before Renovation" />
+          </div>
+
+          <!-- Divider Handle -->
+          <div class="slider-divider-handle">
+            <div class="slider-button" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Labels -->
+          <div class="slider-badge slider-badge-before">Original Standard Room</div>
+          <div class="slider-badge slider-badge-after">Fenyx Luxury Transformation</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGNATURE SERVICES BENTO PREVIEW -->
+    <section class="section" id="services-preview" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="flex-between" style="align-items: flex-end; margin-bottom: 50px; flex-wrap: wrap; gap: 20px;">
+          <div class="section-header" style="margin-bottom: 0;">
+            <div class="eyebrow">Atelier Capabilities</div>
+            <h2 class="section-title">Holistic Interior Services</h2>
+            <p class="section-desc">From raw conceptual schematics to custom joinery and white-glove turnkey execution.
+            </p>
+          </div>
+          <a href="services.html" class="btn btn-outline">
+            <span>Explore All Services</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <div class="grid grid-3">
+          <!-- Service 1 -->
+          <div class="service-bento-card reveal-fade">
+            <div>
+              <div class="service-icon-box">✦</div>
+              <h3 class="service-title">Architectural Interior Design</h3>
+              <p class="service-desc">Complete spatial choreography, material palettes, sightline optimization, and
+                bespoke structural detailing for high-value properties.</p>
+            </div>
+            <div class="service-tags">
+              <span class="service-tag">Residential</span>
+              <span class="service-tag">Commercial</span>
+              <span class="service-tag">Luxury</span>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-bento-card reveal-fade reveal-delay-1">
+            <div>
+              <div class="service-icon-box">◈</div>
+              <h3 class="service-title">Modular Kitchens & Joinery</h3>
+              <p class="service-desc">Precision European cabinetry, integrated Miele/Gaggenau appliances, bookmatched
+                marble islands, and silent soft-close engineering.</p>
+            </div>
+            <div class="service-tags">
+              <span class="service-tag">Custom Joinery</span>
+              <span class="service-tag">Poliform Style</span>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-bento-card reveal-fade reveal-delay-2">
+            <div>
+              <div class="service-icon-box">◫</div>
+              <h3 class="service-title">Space Planning & Layouts</h3>
+              <p class="service-desc">Rigorous geometric choreography optimizing movement circulation, privacy zones,
+                ergonomic sightlines, and natural daylit vectors.</p>
+            </div>
+            <div class="service-tags">
+              <span class="service-tag">2D Blueprints</span>
+              <span class="service-tag">Circulation Flow</span>
+            </div>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="service-bento-card reveal-fade">
+            <div>
+              <div class="service-icon-box">◇</div>
+              <h3 class="service-title">Custom Furniture Crafting</h3>
+              <p class="service-desc">Handcrafted sofas, sculptural travertine dining tables, patinated bronze consoles,
+                and bespoke upholstery made to order.</p>
+            </div>
+            <div class="service-tags">
+              <span class="service-tag">Italian Craft</span>
+              <span class="service-tag">Bespoke Millwork</span>
+            </div>
+          </div>
+
+          <!-- Service 5 -->
+          <div class="service-bento-card reveal-fade reveal-delay-1">
+            <div>
+              <div class="service-icon-box">⚙</div>
+              <h3 class="service-title">Luxury Renovation</h3>
+              <p class="service-desc">Complete structural reconfigurations, historic restoration, MEP overhauls, and
+                modern
+                thermal and acoustic retrofitting for period estates.</p>
+            </div>
+            <div class="service-tags">
+              <span class="service-tag">Structural Rebuild</span>
+              <span class="service-tag">Historic Care</span>
+            </div>
+          </div>
+
+          <!-- Service 6 -->
+          <div class="service-bento-card reveal-fade reveal-delay-2">
+            <div>
+              <div class="service-icon-box">◬</div>
+              <h3 class="service-title">3D Photorealistic & VR Studio</h3>
+              <p class="service-desc">Unreal Engine 5 architectural renders, light simulation studies, and immersive VR
+                virtual walk-throughs before breaking ground.</p>
+            </div>
+            <div class="service-tags">
+              <span class="service-tag">CGI Renders</span>
+              <span class="service-tag">VR Spatial Preview</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE COST & STYLE ESTIMATOR -->
+    <section class="section" id="estimator-section">
+      <div class="container">
+        <div class="section-header centered reveal-fade">
+          <div class="eyebrow centered">Precision Planning</div>
+          <h2 class="section-title">Spatial Budget & Timeline Estimator</h2>
+          <p class="section-desc">Select your project scope, area, and aesthetic to receive an immediate luxury budget
+            range and timeline estimation.</p>
+        </div>
+
+        <div class="estimator-wrapper reveal-fade reveal-delay-1" id="project-estimator">
+          <!-- Step 1: Project Type -->
+          <div style="margin-bottom: 28px;">
+            <label class="form-label" style="margin-bottom: 12px;">1. Select Space Typology</label>
+            <div class="estimator-options-grid">
+              <button type="button" class="estimator-option-btn selected" data-estimator-type="residential">
+                <span class="estimator-option-title">Luxury Residence</span>
+                <span class="estimator-option-desc">Villas, townhouses & apartments</span>
+              </button>
+              <button type="button" class="estimator-option-btn" data-estimator-type="penthouse">
+                <span class="estimator-option-title">Sky Penthouse</span>
+                <span class="estimator-option-desc">High-altitude luxury triplex</span>
+              </button>
+              <button type="button" class="estimator-option-btn" data-estimator-type="office">
+                <span class="estimator-option-title">Executive Office</span>
+                <span class="estimator-option-desc">Corporate HQ & private wealth suites</span>
+              </button>
+              <button type="button" class="estimator-option-btn" data-estimator-type="retail">
+                <span class="estimator-option-title">Boutique Retail</span>
+                <span class="estimator-option-desc">High jewelry, fashion & hospitality</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Area Slider -->
+          <div style="margin-bottom: 32px;">
+            <div class="flex-between">
+              <label class="form-label">2. Approximate Spatial Footprint</label>
+              <span id="estimator-area-val"
+                style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--accent-gold);">3,500 sq.ft</span>
+            </div>
+            <input type="range" id="estimator-area-input" class="estimator-range-slider" min="1000" max="15000"
+              step="250" value="3500" />
+            <div class="flex-between" style="font-size: 0.76rem; color: var(--text-muted);">
+              <span>1,000 sq.ft (Studio/Suite)</span>
+              <span>15,000+ sq.ft (Mega Estate / Commercial)</span>
+            </div>
+          </div>
+
+          <!-- Step 3: Design Style -->
+          <div style="margin-bottom: 28px;">
+            <label class="form-label" style="margin-bottom: 12px;">3. Aesthetic Philosophy</label>
+            <div class="estimator-options-grid">
+              <button type="button" class="estimator-option-btn" data-estimator-style="minimal-zen">
+                <span class="estimator-option-title">Minimalist Serenity</span>
+                <span class="estimator-option-desc">Limewash, oak, silence</span>
+              </button>
+              <button type="button" class="estimator-option-btn selected" data-estimator-style="luxury-modern">
+                <span class="estimator-option-title">Contemporary Opulence</span>
+                <span class="estimator-option-desc">Marble, brushed brass, glass</span>
+              </button>
+              <button type="button" class="estimator-option-btn" data-estimator-style="heritage-classical">
+                <span class="estimator-option-title">Restored Heritage</span>
+                <span class="estimator-option-desc">Mouldings, parquet, velvet</span>
+              </button>
+              <button type="button" class="estimator-option-btn" data-estimator-style="biophilic-organic">
+                <span class="estimator-option-title">Biophilic Organic</span>
+                <span class="estimator-option-desc">Living greenery, travertine stone</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 4: Engagement Scope -->
+          <div style="margin-bottom: 28px;">
+            <label class="form-label" style="margin-bottom: 12px;">4. Engagement Scope</label>
+            <div class="estimator-options-grid">
+              <button type="button" class="estimator-option-btn selected" data-estimator-scope="turnkey">
+                <span class="estimator-option-title">Turnkey Full Execution</span>
+                <span class="estimator-option-desc">Design + Materials + Fitout + Handover</span>
+              </button>
+              <button type="button" class="estimator-option-btn" data-estimator-scope="custom-joinery">
+                <span class="estimator-option-title">Joinery & Fitout Only</span>
+                <span class="estimator-option-desc">Modular kitchen, ceilings & furniture</span>
+              </button>
+              <button type="button" class="estimator-option-btn" data-estimator-scope="concept-3d">
+                <span class="estimator-option-title">Architecture & 3D Concept</span>
+                <span class="estimator-option-desc">Schematics, 3D renders & BOQ</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Estimate Result Readout -->
+          <div class="estimator-result-card">
+            <div>
+              <div
+                style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-muted); margin-bottom: 6px;">
+                Estimated Investment Range</div>
+              <div class="estimator-result-price" id="estimator-price-val">$580,000 — $740,000</div>
+              <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 6px;"
+                id="estimator-timeline-val">Approx. 6 – 8 Months Execution</div>
+            </div>
+            <button type="button" class="btn btn-primary" id="estimator-book-btn">
+              <span>Lock In Estimate & Consult Atelier</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENT TESTIMONIALS & TRUST -->
+    <section class="section" id="testimonials" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header centered reveal-fade">
+          <div class="eyebrow centered">Client Praise</div>
+          <h2 class="section-title">Words From Our Patrons</h2>
+          <p class="section-desc">Distinguished property owners, developers, and corporate leaders share their journey
+            with Fenyx Interiors.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="testimonial-card reveal-fade">
+            <div>
+              <div class="testimonial-stars">★★★★★</div>
+              <blockquote class="testimonial-quote">
+                “Fenyx Interiors transformed our Kensington residence into a haven of quiet elegance. Their
+                meticulous attention to stone joints and lighting is world-class.”
+              </blockquote>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
+                alt="Lady Victoria Montgomery" class="testimonial-avatar" />
+              <div>
+                <div class="author-name">Lady Victoria Montgomery</div>
+                <div class="author-role">Kensington Private Residence, London</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal-fade reveal-delay-1">
+            <div>
+              <div class="testimonial-stars">★★★★★</div>
+              <blockquote class="testimonial-quote">
+                “Building out our Manhattan executive headquarters with Fenyx was effortless. Delivered 3 weeks ahead
+                of schedule with flawless turnkey precision.”
+              </blockquote>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
+                alt="Marcus Sterling" class="testimonial-avatar" />
+              <div>
+                <div class="author-name">Marcus Sterling</div>
+                <div class="author-role">Managing Partner, Sterling Capital New York</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal-fade reveal-delay-2">
+            <div>
+              <div class="testimonial-stars">★★★★★</div>
+              <blockquote class="testimonial-quote">
+                “The 3D photorealistic renderings matched the final physical penthouse down to the exact vein in the
+                Calacatta marble. Absolute artistic mastery.”
+              </blockquote>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80"
+                alt="Soraya Al-Mansoor" class="testimonial-avatar" />
+              <div>
+                <div class="author-name">Soraya Al-Mansoor</div>
+                <div class="author-role">Sky Penthouse Owner, Downtown Dubai</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION BANNER -->
+    <section class="section" id="cta-banner">
+      <div class="container">
+        <div class="luxury-cta-banner reveal-fade">
+          <div class="eyebrow centered" style="margin-bottom: 16px;">Initiate Commission</div>
+          <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.9rem); margin-bottom: 20px; color: #fff;">
+            Ready to craft your architectural sanctuary?
+          </h2>
+          <p style="max-width: 600px; margin: 0 auto 36px; font-size: 1.1rem; color: #d0cecb;">
+            Schedule an exclusive consultation with our principal architects to explore your spatial vision, bespoke
+            joinery, and turnkey timeline.
+          </p>
+          <div class="flex-center" style="gap: 20px; flex-wrap: wrap;">
+            <a href="contact.html" class="btn btn-primary">
+              <span>Book Private Consultation</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="process.html" class="btn btn-outline">
+              <span>Explore Our 6-Step Process</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CASE STUDY MODAL -->
+  <div class="modal-backdrop" id="case-study-modal" role="dialog" aria-modal="true" aria-label="Project Case Study">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="case-study-modal-close" aria-label="Close Case Study">✕</button>
+      <div id="case-study-modal-body">
+        <!-- Content dynamically injected by js/projects.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 14px;">
+            <span class="brand-title">Fenyx <span>Interiors</span></span>
+            <span class="brand-subtitle">Architectural Atelier</span>
+          </a>
+          <p class="footer-brand-desc">
+            Bespoke interior architecture, custom Italian millwork, and turnkey execution for visionary private
+            residences and corporate environments worldwide.
+          </p>
+          <div class="footer-timezones">
+            <div class="footer-tz-item">LON: <span id="tz-lon">--:--</span></div>
+            <div class="footer-tz-item">NYC: <span id="tz-ny">--:--</span></div>
+            <div class="footer-tz-item">DXB: <span id="tz-dxb">--:--</span></div>
+            <div class="footer-tz-item">BOM: <span id="tz-bom">--:--</span></div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home Atelier</a></li>
+            <li><a href="about.html" class="footer-link">About Studio</a></li>
+            <li><a href="services.html" class="footer-link">Capabilities & Services</a></li>
+            <li><a href="projects.html" class="footer-link">Portfolio & Archives</a></li>
+            <li><a href="process.html" class="footer-link">The 6-Stage Process</a></li>
+            <li><a href="contact.html" class="footer-link">Book Consultation</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Capabilities</h4>
+          <ul class="footer-links">
+            <li><a href="services.html" class="footer-link">Architectural Interiors</a></li>
+            <li><a href="services.html" class="footer-link">Modular Kitchens</a></li>
+            <li><a href="services.html" class="footer-link">Custom Millwork & Furniture</a></li>
+            <li><a href="services.html" class="footer-link">Space Planning</a></li>
+            <li><a href="services.html" class="footer-link">Luxury Renovation</a></li>
+            <li><a href="services.html" class="footer-link">3D Spatial VR Studios</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Atelier Newsletter</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
+            Receive our quarterly monograph on architectural materiality, private residence reveals, and interior
+            philosophy.
+          </p>
+          <form class="footer-newsletter-form"
+            onsubmit="event.preventDefault(); alert('Thank you for subscribing to Fenyx Monograph.'); this.reset();">
+            <input type="email" class="footer-input" placeholder="Your email address" required />
+            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          </form>
+          <p style="font-size: 0.74rem; color: var(--text-muted); margin-top: 10px;">Strictly confidential. No spam.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Fenyx Interiors Ltd. All rights reserved. Handcrafted for Architectural Distinction.</div>
+        <div class="flex" style="gap: 20px;">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Commission</a>
+          <a href="#" class="footer-link">Press Kit</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GSAP Core + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Site Modules -->
+  <script src="js/projects-data.js"></script>
+  <script src="js/sanity-client.js"></script>
+  <script src="js/sanity-queries.js"></script>
+  <script src="js/fenyx-hero.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/estimator.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
