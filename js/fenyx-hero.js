@@ -26,8 +26,8 @@
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
   const CFG = Object.freeze({
     TOTAL_FRAMES: isMobile ? 300 : 240,
-    FRAME_PATH: isMobile ? 'highquality-frames-for-mobile/ezgif-frame-' : 'frames-for-desktop/frame_',
-    FRAME_EXT: isMobile ? '.jpg' : '.webp',
+    FRAME_PATH: isMobile ? 'frames-for-mobile/mobile_frame_' : 'frames-for-desktop/frame_',
+    FRAME_EXT: '.webp',
     PRIORITY_COUNT: 45,      // First N frames loaded before ScrollTrigger fires
     CONCURRENCY: 10,      // Background parallel downloads
     SCROLL_DISTANCE: '600%',  // Pin scroll travel — premium, unhurried feel
@@ -111,7 +111,11 @@
     const _ready = new Array(CFG.TOTAL_FRAMES).fill(false);
 
     function src(index) {
-      const pad = String(index + 1).padStart(3, '0');
+      let frameNum = index + 1;
+      if (isMobile) {
+        frameNum = (index * 2) + 1; // Stride by 2 (1, 3, 5...) to prevent 1.5GB RAM usage on mobile
+      }
+      const pad = String(frameNum).padStart(3, '0');
       return `${CFG.FRAME_PATH}${pad}${CFG.FRAME_EXT}`;
     }
 
